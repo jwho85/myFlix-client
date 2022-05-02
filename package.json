@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/jwho85/myFlix-client#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
