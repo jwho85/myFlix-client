@@ -36,3 +36,12 @@ export function RegistrationView(props) {
         </form>
     );
 }
+
+RegistrationView.propTypes = {
+    user: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        birthday: PropTypes.string.isRequired
+    })
+};
