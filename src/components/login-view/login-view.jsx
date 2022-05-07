@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -16,20 +19,26 @@ export function LoginView(props) {
     };
 
     return (
-        <Form>
-            <Form.Group controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-            </Form.Group>
-
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Submit
-            </Button>
-        </Form>
+        <Row className="justify-content-md-center">
+            <Col md={8}>
+                <Form>
+                    <Form.Group controlId="formUsername">
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                    </Form.Group>
+                    <Form.Group controlId="formPassword">
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                        Login
+                    </Button>
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                        Register
+                    </Button>
+                </Form>
+            </Col>
+        </Row>
     );
 }
 
