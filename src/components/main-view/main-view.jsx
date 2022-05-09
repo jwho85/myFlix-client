@@ -60,11 +60,13 @@ export class MainView extends React.Component {
 
         /* If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned */
 
+        /* MovieView shows one movie, MoveCard shows all movies */
+
         return (
             <Row className="main-view justify-content-md-center">
                 {selectedMovie
                     ? (
-                        <Col md={8}>
+                        <Col md={6}>
                             <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
                         </Col>
                     )

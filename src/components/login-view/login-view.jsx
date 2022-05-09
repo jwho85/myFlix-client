@@ -19,8 +19,8 @@ export function LoginView(props) {
     };
 
     return (
-        <Row className="justify-content-md-center">
-            <Col md={8}>
+        <Row className="login-view justify-content-md-center">
+            <Col md={6}>
                 <Form>
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
@@ -30,12 +30,14 @@ export function LoginView(props) {
                         <Form.Label>Password:</Form.Label>
                         <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>
-                        Login
-                    </Button>
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>
-                        Register
-                    </Button>
+                    <div className="buttons">
+                        <Button variant="primary" type="submit" onClick={handleSubmit} className="login-button">
+                            Login
+                        </Button>
+                        <Button variant="primary" type="submit" onClick={handleSubmit} className="register-button">
+                            Register
+                        </Button>
+                    </div>
                 </Form>
             </Col>
         </Row>

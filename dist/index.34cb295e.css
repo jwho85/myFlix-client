@@ -1,5 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif !important;
+    background: #141414 !important;
+    color: #141414 !important;
 }
 
 .btn {
@@ -7,11 +9,42 @@ body {
     border-color: #e50914 !important;
 }
 
-.app-container {
-    background: #141414 !important;
+.btn:hover {
+    background: #990000 !important;
+    border-color: #990000 !important;
+
 }
 
 .form-label {
     color: white !important;
+}
+
+.buttons {
+    padding-top: 2% !important;
+}
+
+.login-button {
+    margin-right: 20px !important;
+}
+
+.form-control {
+    margin-bottom: 10px !important;
+}
+
+.main-view {
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+.login-view {
+    margin-top: 5% !important;
+}
+
+.card {
+    margin-bottom: 50px !important;
+}
+
+.bold {
+    font-weight: bold !important;
 }
 /*# sourceMappingURL=index.34cb295e.css.map */

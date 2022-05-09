@@ -25142,18 +25142,18 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }));
-        /* If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned */ return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
+        /* If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned */ /* MovieView shows one movie, MoveCard shows all movies */ return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 64
+                lineNumber: 66
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                md: 8,
+                md: 6,
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 67
+                    lineNumber: 69
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25163,7 +25163,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 68
+                        lineNumber: 70
                     },
                     __self: this
                 })
@@ -25171,7 +25171,7 @@ class MainView extends _reactDefault.default.Component {
                     md: 3,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 72
+                        lineNumber: 74
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25181,7 +25181,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 73
+                            lineNumber: 75
                         },
                         __self: this
                     }, movie._id)
@@ -28419,14 +28419,14 @@ function LoginView(props) {
         /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
-        className: "justify-content-md-center",
+        className: "login-view justify-content-md-center",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
             lineNumber: 22
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-            md: 8,
+            md: 6,
             __source: {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 23
@@ -28495,27 +28495,39 @@ function LoginView(props) {
                             })
                         ]
                     }),
-                    /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                        variant: "primary",
-                        type: "submit",
-                        onClick: handleSubmit,
+                    /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                        className: "buttons",
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
                             lineNumber: 33
                         },
                         __self: this,
-                        children: "Login"
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                        variant: "primary",
-                        type: "submit",
-                        onClick: handleSubmit,
-                        __source: {
-                            fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 36
-                        },
-                        __self: this,
-                        children: "Register"
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                                variant: "primary",
+                                type: "submit",
+                                onClick: handleSubmit,
+                                className: "login-button",
+                                __source: {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 34
+                                },
+                                __self: this,
+                                children: "Login"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                                variant: "primary",
+                                type: "submit",
+                                onClick: handleSubmit,
+                                className: "register-button",
+                                __source: {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 37
+                                },
+                                __self: this,
+                                children: "Register"
+                            })
+                        ]
                     })
                 ]
             })
@@ -30677,7 +30689,16 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: [
-                                "Genre: ",
+                                /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                    className: "bold",
+                                    __source: {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 19
+                                    },
+                                    __self: this,
+                                    children: "Genre:"
+                                }),
+                                " ",
                                 movie.Genre.Name
                             ]
                         }),
@@ -30688,7 +30709,16 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: [
-                                "Genre Description: ",
+                                /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                    className: "bold",
+                                    __source: {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 20
+                                    },
+                                    __self: this,
+                                    children: "Genre Description:"
+                                }),
+                                " ",
                                 movie.Genre.Description
                             ]
                         }),
@@ -30699,7 +30729,16 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: [
-                                "Director: ",
+                                /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                    className: "bold",
+                                    __source: {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 21
+                                    },
+                                    __self: this,
+                                    children: "Director:"
+                                }),
+                                " ",
                                 movie.Director.Name
                             ]
                         }),
@@ -30710,7 +30749,16 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: [
-                                "Director Bio: ",
+                                /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                    className: "bold",
+                                    __source: {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 22
+                                    },
+                                    __self: this,
+                                    children: "Director Bio:"
+                                }),
+                                " ",
                                 movie.Director.Bio
                             ]
                         }),
@@ -30721,7 +30769,16 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: [
-                                "Born: ",
+                                /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                    className: "bold",
+                                    __source: {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 23
+                                    },
+                                    __self: this,
+                                    children: "Born:"
+                                }),
+                                " ",
                                 movie.Director.Birth
                             ]
                         }),
@@ -30732,7 +30789,16 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: [
-                                "Died: ",
+                                /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                                    className: "bold",
+                                    __source: {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 24
+                                    },
+                                    __self: this,
+                                    children: "Died:"
+                                }),
+                                " ",
                                 movie.Director.Death
                             ]
                         }),

@@ -21,8 +21,8 @@ export function RegistrationView(props) {
     };
 
     return (
-        <Row className="justify-content-md-center">
-            <Col md={8}>
+        <Row className="registration-view justify-content-md-center">
+            <Col md={6}>
                 <Form>
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
