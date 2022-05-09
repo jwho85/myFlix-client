@@ -1,4 +1,13 @@
-.my-flix {
-  color: steelblue;
+body {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.btn {
+  background: #e50914 !important;
+  border-color: #e50914 !important;
+}
+
+.app-container {
+  background: #141414 !important;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
