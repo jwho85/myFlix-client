@@ -47,4 +47,16 @@ body {
 .bold {
     font-weight: bold !important;
 }
+
+.logo-text {
+    color: #e50914 !important;
+    font-weight: bold !important;
+    font-size: 30px !important;
+
+}
+
+.nav-bar {
+    background: #141414 !important;
+    opacity: 0.9 !important;
+}
 /*# sourceMappingURL=index.34cb295e.css.map */

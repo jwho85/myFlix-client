@@ -6,15 +6,16 @@ import Container from 'react-bootstrap/Container';
 
 export class HeaderView extends React.Component {
     render() {
-        <Navbar bg="light" expand="lg" sticky="top">
-            <Container>
-                <Navbar.Brand href="#">myFlix</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        return (
+            <Navbar expand="lg" sticky="top" className="nav-bar">
+                <Container>
+                    <Navbar.Brand href="#" className="logo-text">MYFLIX</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto"></Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        );
     }
 }
