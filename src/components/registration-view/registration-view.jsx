@@ -11,13 +11,62 @@ export function RegistrationView(props) {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
+    // Declare hook for each input
+    const [usernameErr, setUsernameErr] = useState('');
+    const [passwordErr, setPasswordErr] = useState('');
+    const [emailErr, setEmailErr] = useState('');
+    const [birthdayErr, setBirthdayErr] = useState('');
+
+    // Validate user inputs
+    const validate = () => {
+        let isReq = true;
+        if (!username) {
+            setUsernameErr('Username Required');
+            isReq = false;
+        } else if (username.length < 2) {
+            setUsernameErr('Username must be 2 characters long');
+            isReq = false;
+        }
+        if (!password) {
+            setPasswordErr('Password Required');
+            isReq = false;
+        } else if (password.length < 6) {
+            setPassword('Password must be 6 characters long');
+            isReq = false;
+        }
+        if (!email) {
+            setEmailErr('Email Required');
+            isReq = false;
+        } else if (email.indexOf('@') === -1) {
+            setEmailErr('Email is invalid');
+            isReq = false;
+        }
+
+        return isReq;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password, email, birthday);
-        /* Send a request to the server for authentication */
-        /* then call props.onLoggedIn(username) */
-        props.onLoggedIn(username);
+        const isReq = validate();
+        if (isReq) {
+            /* Send a request to the server for authentication */
+            axios.post('https://movie-api-hoover.herokuapp.com/users', {
+                Username: username,
+                Password: password,
+                Email: email,
+                Birthday: birthday
+            })
+                .then(response => {
+                    const data = response.data;
+                    console.log(data);
+                    alert('Registration successful, please login!');
+                    window.open('/', '_self'); // So the page will open in the current tab
+                })
+                .catch(response => {
+                    console.error(response);
+                    alert('Unable to register');
+                });
+        }
     };
 
     return (
@@ -26,15 +75,21 @@ export function RegistrationView(props) {
                 <Form>
                     <Form.Group controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
-                        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                        <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+                        {/* code added here to display validation error */}
+                        {usernameErr && <p className="login-error">{usernameErr}</p>}
                     </Form.Group>
                     <Form.Group controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
-                        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                        <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                        {/* code added here to display validation error */}
+                        {passwordErr && <p className="login-error">{passwordErr}</p>}
                     </Form.Group>
                     <Form.Group controlId="formEmail">
                         <Form.Label>Email:</Form.Label>
-                        <Form.Control type="email" onChange={e => setEmail(e.target.value)} />
+                        <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+                        {/* code added here to display validation error */}
+                        {emailErr && <p className="login-error">{emailErr}</p>}
                     </Form.Group>
                     <Form.Group controlId="formBirthday">
                         <Form.Label>Birthday:</Form.Label>
@@ -43,37 +98,18 @@ export function RegistrationView(props) {
                     <Button variant="primary" type="submit" onClick={handleSubmit}>
                         Register
                     </Button>
+                    <p></p>
+                    <p>Already registered <Link to={'/'}>sign in</Link> here</p>
                 </Form>
             </Col>
         </Row>
-        // <form>
-        //     <label>
-        //         Username:
-        //         <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        //     </label>
-        //     <label>
-        //         Password:
-        //         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        //     </label>
-        //     <label>
-        //         Email:
-        //         <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        //     </label>
-        //     <label>
-        //         Birthday:
-        //         <input type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        //     </label>
-        //     <button type="submit" onClick={handleSubmit}>Submit</button>
-        // </form>
     );
 }
 
 RegistrationView.propTypes = {
-    user: PropTypes.shape({
+    register: PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
-        birthday: PropTypes.string.isRequired
-    }).isRequired,
-    onLoggedIn: PropTypes.func.isRequired
+    })
 };

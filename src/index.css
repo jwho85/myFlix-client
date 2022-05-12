@@ -59,3 +59,11 @@ body {
     background: #141414 !important;
     opacity: 0.9 !important;
 }
+
+.nav-link {
+    color: white !important;
+}
+
+.login-error {
+    color: #e50914 !important;
+}
