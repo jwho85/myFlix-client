@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
 
@@ -18,10 +19,10 @@ export class MovieView extends React.Component {
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Text>{movie.Description}</Card.Text>
                     <Link to={`/directors/${movie.Director.Name}`}>
-                        <Button variant="link">Director</Button>
+                        <Button>Director</Button>
                     </Link>
                     <Link to={`/genres/${movie.Genre.Name}`}>
-                        <Button variant="link">Genre</Button>
+                        <Button>Genre</Button>
                     </Link>
                     <Button onClick={() => { onBackClick(); }}>Back</Button>
                 </Card.Body>

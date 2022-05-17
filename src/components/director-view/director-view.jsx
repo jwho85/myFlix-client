@@ -5,19 +5,21 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
+import "./director-view.scss";
+
 
 export class DirectorView extends React.Component {
 
     render() {
-        const { onBackClick } = this.props;
+        const { director, movies, onBackClick } = this.props;
 
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>{movie.Director.Name}</Card.Title>
-                    <Card.Text>{movie.Director.Bio}</Card.Text>
-                    <Card.Text>{movie.Director.Birth}</Card.Text>
-                    <Card.Text>{movie.Director.Death}</Card.Text>
+                    <Card.Title>{movies.director.Name}</Card.Title>
+                    <Card.Text>{movies.director.Bio}</Card.Text>
+                    <Card.Text>{movies.director.Birth}</Card.Text>
+                    <Card.Text>{movies.director.Death}</Card.Text>
                     <Button onClick={() => { onBackClick(); }}>Back</Button>
                 </Card.Body>
             </Card>

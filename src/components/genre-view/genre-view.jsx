@@ -5,17 +5,18 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
+import "./genre-view.scss";
 
 export class GenreView extends React.Component {
 
     render() {
-        const { onBackClick } = this.props;
+        const { genre, movies, onBackClick } = this.props;
 
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>{movie.Genre.Name}</Card.Title>
-                    <Card.Text>{movie.Genre.Description}</Card.Text>
+                    <Card.Title>{movies.Genre.Name}</Card.Title>
+                    <Card.Text>{movies.Genre.Description}</Card.Text>
                     <Button onClick={() => { onBackClick(); }}>Back</Button>
                 </Card.Body>
             </Card>

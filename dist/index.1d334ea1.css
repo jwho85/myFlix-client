@@ -1,8 +1,22 @@
-.form-label {
-  color: white !important;
-}
+
+
+
+
+
+
 body {
     font-family: 'Roboto', sans-serif !important;
+    background: #141414 !important;
+    color: #141414;
+}
+
+body a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.white-text {
+    color: white !important;
 }
 
 .btn {
@@ -10,7 +24,62 @@ body {
     border-color: #e50914 !important;
 }
 
-.app-container {
+.btn:hover {
+    background: #990000 !important;
+    border-color: #990000 !important;
+
+}
+
+.form-label {
+    color: white !important;
+}
+
+.buttons {
+    padding-top: 2% !important;
+}
+
+.login-button {
+    margin-right: 20px !important;
+}
+
+.form-control {
+    margin-bottom: 10px !important;
+}
+
+.main-view {
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+.login-view {
+    margin-top: 5% !important;
+}
+
+.card {
+    margin-bottom: 50px !important;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.logo-text {
+    color: #e50914 !important;
+    font-weight: bold !important;
+    font-size: 30px !important;
+
+}
+
+.nav-bar {
     background: #141414 !important;
+    opacity: 0.9 !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.login-error {
+    color: #e50914 !important;
 }
 /*# sourceMappingURL=index.1d334ea1.css.map */

@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
+import "./profile-view.scss";
 
 export class ProfileView extends React.Component {
 
@@ -25,7 +26,7 @@ export class ProfileView extends React.Component {
         const Username = localStorage.getItem('user');
         let token = localStorage.getItem('token');
 
-        axios.get(`https://movieanorak.herokuapp.com/users/${Username}`, {
+        axios.get('https://movieanorak.herokuapp.com/users/${Username}', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
@@ -117,7 +118,7 @@ removeFavorite(token) => {
     const Username = localStorage.getItem('user');
     let token = localStorage.getItem('token');
 
-    axios.delete('https://movie-api-hoover.herokuapp.com/user/${Username}/movies/${movieid}', {
+    axios.delete('https://movie-api-hoover.herokuapp.com/user/${Username}/movies/${movieId}', {
         headers: { Authorization: `Bearer ${token}` }
     })
         .then(response => {

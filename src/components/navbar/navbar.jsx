@@ -1,8 +1,9 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
+import "./navbar.scss";
 
 export function Menubar({ user }) {
 
@@ -33,7 +34,7 @@ export function Menubar({ user }) {
                             <Nav.Link href={'/users/${user}'}>{user}</Nav.Link>
                         )}
                         {isAuth() && (
-                            <Button variant="link" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+                            <Button onClick={() => { onLoggedOut() }}>Logout</Button>
                         )}
                         {!isAuth() && (
                             <Nav.Link href="/">Sign-in</Nav.Link>

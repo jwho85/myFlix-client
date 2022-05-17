@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./registration-view.scss";
 
 export function RegistrationView(props) {
     const [username, setUsername] = useState('');
@@ -99,7 +102,7 @@ export function RegistrationView(props) {
                         Register
                     </Button>
                     <p></p>
-                    <p>Already registered <Link to={'/'}>sign in</Link> here</p>
+                    <p class="white-text">Already registered? <Link to={'/'}>Sign in</Link> here.</p>
                 </Form>
             </Col>
         </Row>

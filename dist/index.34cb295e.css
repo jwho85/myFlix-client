@@ -1,7 +1,16 @@
 body {
     font-family: 'Roboto', sans-serif !important;
     background: #141414 !important;
-    color: #141414 !important;
+    color: #141414;
+}
+
+body a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.white-text {
+    color: white !important;
 }
 
 .btn {
