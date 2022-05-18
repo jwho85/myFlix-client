@@ -10,13 +10,13 @@ import "./genre-view.scss";
 export class GenreView extends React.Component {
 
     render() {
-        const { genre, movies, onBackClick } = this.props;
+        const { genre, onBackClick } = this.props;
 
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>{movies.Genre.Name}</Card.Title>
-                    <Card.Text>{movies.Genre.Description}</Card.Text>
+                    <Card.Title>{genre.Name}</Card.Title>
+                    <Card.Text>{genre.Description}</Card.Text>
                     <Button onClick={() => { onBackClick(); }}>Back</Button>
                 </Card.Body>
             </Card>

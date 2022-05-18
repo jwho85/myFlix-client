@@ -7,19 +7,18 @@ import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import "./director-view.scss";
 
-
 export class DirectorView extends React.Component {
 
     render() {
-        const { director, movies, onBackClick } = this.props;
+        const { director, onBackClick } = this.props;
 
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>{movies.director.Name}</Card.Title>
-                    <Card.Text>{movies.director.Bio}</Card.Text>
-                    <Card.Text>{movies.director.Birth}</Card.Text>
-                    <Card.Text>{movies.director.Death}</Card.Text>
+                    <Card.Title>{director.Name}</Card.Title>
+                    <Card.Text>{director.Bio}</Card.Text>
+                    <Card.Text>Born: {director.Birth}</Card.Text>
+                    <Card.Text>Died: {director.Death}</Card.Text>
                     <Button onClick={() => { onBackClick(); }}>Back</Button>
                 </Card.Body>
             </Card>

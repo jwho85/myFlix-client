@@ -26,7 +26,7 @@ export class ProfileView extends React.Component {
         const Username = localStorage.getItem('user');
         let token = localStorage.getItem('token');
 
-        axios.get('https://movieanorak.herokuapp.com/users/${Username}', {
+        axios.get('https://movie-api-hoover.herokuapp.com/users/${Username}', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
@@ -43,85 +43,66 @@ export class ProfileView extends React.Component {
             });
     }
 
-    // validate user inputs
-    validate = () => {
-        let isReq = true;
-        if (!username) {
-            setUsernameErr('Username Required');
-            isReq = false;
-        } else if (username.length < 2) {
-            setUsernameErr('Username must be 2 characters long');
-            isReq = false;
-        }
-        if (!password) {
-            setPasswordErr('Password Required');
-            isReq = false;
-        } else if (password.length < 6) {
-            setPassword('Password must be 6 characters long');
-            isReq = false;
-        }
-
-        return isReq;
-    }
-
     editUserDetails = (e) => {
         e.preventDefault();
 
         const Username = localStorage.getItem('user');
         let token = localStorage.getItem('token');
 
-        const isReq = validate();
-        if (isReq) {
-            /* Send a request to the server for authentication */
-            axios.put('https://movie-api-hoover.herokuapp.com/user/${Username}', {
-                Username: this.state.Username,
-                Password: this.state.Password,
-                Email: this.state.Email,
-                Birthday: this.state.Birthday
-            }),
-                .then(response => {
-                this.setState({
-                    Username: response.data.Username,
-                    Password: response.data.Password,
-                    Email: response.data.Email,
-                    Birthday: response.data.Birthday
-                })
-                localStorage.setItem('user', this.state.Username);
-                alert("Profile has been updated");
-                window.open('/', '_self'); // So the page will open in the current tab
+        axios.put('https://movie-api-hoover.herokuapp.com/user/${Username}', {
+            Username: this.state.Username,
+            Password: this.state.Password,
+            Email: this.state.Email,
+            Birthday: this.state.Birthday
+        }),
+        .then(response => {
+            this.setState({
+                Username: response.data.Username,
+                Password: response.data.Password,
+                Email: response.data.Email,
+                Birthday: response.data.Birthday
             })
-                    .catch(response => {
-                        console.error(response);
-                    });
-        }
+            localStorage.setItem('user', this.state.Username);
+            alert("Profile has been updated");
+            window.open('/', '_self'); // So the page will open in the current tab
+        })
+                .catch(response => {
+                    console.error(response);
+                });
     };
 
     deleteProfile() => {
 
-    const Username = localStorage.getItem('user');
-    let token = localStorage.getItem('token');
+    let result = confirm("Are you sure you want to delete your profile?");
 
-    axios.delete('https://movie-api-hoover.herokuapp.com/user/${Username}', {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-        .then(response => {
-            alert("Profile has been deleted.")
-            window.open('/', '_self'); // So the page will open in the current tab
-        });
+    if (result) {
+
+        const Username = localStorage.getItem('user');
+        let token = localStorage.getItem('token');
+
+        axios.delete('https://movie-api-hoover.herokuapp.com/user/${Username}', {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+            .then(response => {
+                alert("Profile has been deleted.")
+                window.open('/', '_self'); // So the page will open in the current tab
+            });
         .catch (function (error) {
-        console.log(error);
-    });
+            console.log(error);
+        });
+    }
 }
 
-removeFavorite(token) => {
+removeFavorite() => {
 
     const Username = localStorage.getItem('user');
     let token = localStorage.getItem('token');
 
-    axios.delete('https://movie-api-hoover.herokuapp.com/user/${Username}/movies/${movieId}', {
+    axios.delete('https://movie-api-hoover.herokuapp.com/user/${Username}/movies/${movie._id}', {
         headers: { Authorization: `Bearer ${token}` }
     })
         .then(response => {
+            FavoriteMovies.filter(movie => movie._id != match.params.movie._id);
             alert("Movie has been removed.")
         });
         .catch (function (error) {
@@ -130,6 +111,16 @@ removeFavorite(token) => {
 }
 
 return (
+    <Row className="profile-view justify-content-md-center">
+    {FavoriteMovies.map(movie => {
+        return (
+            <Col md={3}>
+            {movie.Title}
+            </Col>
+        )
+    })}
+    </Row>
+
     <Row className="profile-view justify-content-md-center">
         <Col md={6}>
             <Form>

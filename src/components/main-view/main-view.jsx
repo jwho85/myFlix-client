@@ -10,6 +10,9 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
+import { GenreView } from "../genre-view/genre-view";
+import { DirectorView } from "../director-view/director-view";
+import { ProfileView } from "../profile-view/profile-view";
 
 import { Menubar } from "../navbar/navbar";
 
@@ -31,7 +34,7 @@ export default class MainView extends React.Component {
             .then((response) => {
                 // Assign the result to the state
                 this.setState({
-                    movies: response.data,
+                    movies: response.data
                 });
             })
             .catch(function (error) {
@@ -85,7 +88,7 @@ export default class MainView extends React.Component {
 
         return (
             <Router>
-                <Menubar />
+                <Menubar user={user} />
 
                 <Route
                     exact
