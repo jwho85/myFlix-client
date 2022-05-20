@@ -124,7 +124,7 @@ export default class MainView extends React.Component {
                             <Row className="justify-content-md-center">
                                 <Col md={8}>
                                     <MovieView
-                                        movie={movies.find((m) => m._Id === match.params.MovieId)}
+                                        movie={movies.find((movie) => movie._id === match.params.movieId)}
                                         onBackClick={() => history.goBack()}
                                     />
                                 </Col>
@@ -189,8 +189,7 @@ export default class MainView extends React.Component {
                                 <Col md={8}>
                                     <DirectorView
                                         director={
-                                            movies.find((m) => m.Director.Name === match.params.name)
-                                                .Director
+                                            movies.find((m) => m.Director.Name === match.params.name).Director
                                         }
                                         onBackClick={() => history.goBack()}
                                     />

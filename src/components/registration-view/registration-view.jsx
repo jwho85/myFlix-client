@@ -102,7 +102,7 @@ export function RegistrationView(props) {
                         Register
                     </Button>
                     <p></p>
-                    <p class="white-text">Already registered? <Link to={'/'}>Sign in</Link> here.</p>
+                    <p className="white-text">Already registered? <Link to={'/'}><span className="link-underline">Sign in</span></Link> here.</p>
                 </Form>
             </Col>
         </Row>

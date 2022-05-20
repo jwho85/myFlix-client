@@ -22,6 +22,10 @@ export class ProfileView extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.getUserDetails();
+    }
+
     getUserDetails() {
         const Username = localStorage.getItem("user");
         let token = localStorage.getItem("token");
@@ -31,7 +35,7 @@ export class ProfileView extends React.Component {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
-                console.log(FavoriteMovies);
+                console.log(response);
                 this.setState({
                     Username: response.data.Username,
                     Password: response.data.Password,
@@ -68,12 +72,18 @@ export class ProfileView extends React.Component {
         let token = localStorage.getItem("token");
 
         axios
-            .put(`https://movie-api-hoover.herokuapp.com/user/${Username}`, {
-                Username: this.state.Username,
-                Password: this.state.Password,
-                Email: this.state.Email,
-                Birthday: this.state.Birthday,
-            })
+            .put(
+                `https://movie-api-hoover.herokuapp.com/users/${Username}`,
+                {
+                    Username: this.state.Username,
+                    Password: this.state.Password,
+                    Email: this.state.Email,
+                    Birthday: this.state.Birthday,
+                },
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                }
+            )
             .then((response) => {
                 this.setState({
                     Username: response.data.Username,
@@ -98,11 +108,12 @@ export class ProfileView extends React.Component {
             let token = localStorage.getItem("token");
 
             axios
-                .delete(`https://movie-api-hoover.herokuapp.com/user/${Username}`, {
+                .delete(`https://movie-api-hoover.herokuapp.com/users/${Username}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 })
                 .then((response) => {
                     alert(`Profile has been deleted.`);
+                    localStorage.clear();
                     window.open("/", "_self"); // So the page will open in the current tab
                 })
                 .catch(function (error) {
@@ -111,22 +122,21 @@ export class ProfileView extends React.Component {
         }
     };
 
-    removeFavorite = () => {
+    removeFavorite = (movie) => {
         const Username = localStorage.getItem("user");
         let token = localStorage.getItem("token");
 
         axios
             .delete(
-                `https://movie-api-hoover.herokuapp.com/user/${Username}/movies/${movie._id}`,
+                `https://movie-api-hoover.herokuapp.com/users/${Username}/movies/${movie._id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
             )
             .then((response) => {
-                this.state.FavoriteMovies.filter(
-                    (movie) => movie._id != match.params.movie._id
-                );
-                alert(`${movie.Title} has been removed from your favorites.`);
+                console.log(response);
+                // alert(`${movie.Title} has been removed from your favorites.`);
+                this.componentDidMount();
             })
             .catch(function (error) {
                 console.log(error);
@@ -135,72 +145,90 @@ export class ProfileView extends React.Component {
 
     render() {
 
-        const { Username, Password, Email, Birthday, FavoriteMovies } = this.state;
+        const { Username, Password, Email, Birthday, FavoriteMovies } = this.state
+        const { movies } = this.props;
+
         return (
             <>
-                <Row className="profile-view justify-content-md-center">
-                    {movies.filter((movie) => FavoriteMovies.includes(movie._id)) => (
-                    <Col md={3}>
-                        {movie.Title}
-                    </Col>
-                    )
-                    }
-                </Row>
+                {console.log(this.state)}
 
-                <Row className="profile-view justify-content-md-center">
-                    <Col md={12}>
-                        <Form>
-                            <Form.Group controlId="formUsername">
-                                <Form.Label>Username:</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Enter new username"
-                                    value=""
-                                    onChange={(e) => this.setUsername(e.target.value)}
+                {FavoriteMovies.length === 0 ? (
+                    <p class="white-text">You have no favorite movies.</p>
+                ) : (
+                    movies
+                        .filter((movie) => FavoriteMovies.includes(movie._id))
+                        .map((movie) => (
+                            <Card className="favorite-movie card-content" key={movie._id}>
+                                <Card.Img
+                                    className="fav-poster"
+                                    variant="top"
+                                    src={movie.ImagePath}
+                                    crossorigin="anonymous"
                                 />
-                            </Form.Group>
-                            <Form.Group controlId="formPassword">
-                                <Form.Label>Password:</Form.Label>
-                                <Form.Control
-                                    type="password"
-                                    placeholder="Enter new password"
-                                    value=""
-                                    onChange={(e) => this.setPassword(e.target.value)}
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="formEmail">
-                                <Form.Label>Email:</Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    placeholder="Enter new email"
-                                    value=""
-                                    onChange={(e) => this.setEmail(e.target.value)}
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="formBirthday">
-                                <Form.Label>Birthday:</Form.Label>
-                                <Form.Control
-                                    type="date"
-                                    onChange={(e) => this.setBirthday(e.target.value)}
-                                />
-                            </Form.Group>
-                            <Button
-                                variant="primary"
-                                type="submit"
-                                onClick={this.editUserDetails}
-                            >
-                                Update Information
-                            </Button>
-                            <Button
-                                variant="danger"
-                                type="submit"
-                                onClick={this.deleteProfile}
-                            >
-                                Delete Profile
-                            </Button>
-                        </Form>
-                    </Col>
-                </Row>
+                                <Card.Body>
+                                    <Card.Title className="movie_title">{movie.Title}</Card.Title>
+                                    <Button
+                                        size="sm"
+                                        variant="danger"
+                                        value={movie._id}
+                                        onClick={(e) => this.removeFavorite(movie)}
+                                    >
+                                        Remove
+                                    </Button>
+                                </Card.Body>
+                            </Card>
+                        )))}
+
+                <Form>
+                    <Form.Group controlId="formUsername">
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter new username"
+                            value={Username}
+                            onChange={(e) => this.setUsername(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formPassword">
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Enter new password"
+                            value={Password}
+                            onChange={(e) => this.setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formEmail">
+                        <Form.Label>Email:</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter new email"
+                            value={Email}
+                            onChange={(e) => this.setEmail(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formBirthday">
+                        <Form.Label>Birthday:</Form.Label>
+                        <Form.Control
+                            type="date"
+                            onChange={(e) => this.setBirthday(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        onClick={this.editUserDetails}
+                    >
+                        Update Information
+                    </Button>
+                    <Button
+                        variant="danger"
+                        type="submit"
+                        onClick={this.deleteProfile}
+                    >
+                        Delete Profile
+                    </Button>
+                </Form>
             </>
         );
     }

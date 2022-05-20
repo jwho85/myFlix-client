@@ -85,4 +85,8 @@ body a {
 .login-error {
     color: #e50914 !important;
 }
+
+.link-underline {
+    text-decoration: underline !important;
+}
 /*# sourceMappingURL=index.1d334ea1.css.map */

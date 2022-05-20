@@ -76,3 +76,7 @@ body a {
 .login-error {
     color: #e50914 !important;
 }
+
+.link-underline {
+    text-decoration: underline !important;
+}

@@ -20,7 +20,7 @@ export class MovieView extends React.Component {
             }
         )
             .then(() => {
-                alert(`You have added ${movie.Title} to your favorites!`);
+                alert(`"${movie.Title}" has been added to your favorites!`);
             })
             .catch(function (error) {
                 console.log(error);
