@@ -57,32 +57,30 @@ export function LoginView(props) {
     };
 
     return (
-        <Row className="login-view justify-content-md-center">
-            <Col md={6}>
-                <Form>
-                    <Form.Group controlId="formUsername">
-                        <Form.Label>Username:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
-                        {/* code added here to display validation error */}
-                        {usernameErr && <p className="login-error">{usernameErr}</p>}
-                    </Form.Group>
-                    <Form.Group controlId="formPassword">
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                        {/* code added here to display validation error */}
-                        {passwordErr && <p className="login-error">{passwordErr}</p>}
-                    </Form.Group>
-                    <div className="buttons">
-                        <Button variant="primary" type="submit" onClick={handleSubmit} className="login-button">
-                            Login
-                        </Button>
-                        <Link to={'/register'}>
-                            <Button variant="primary" type="submit">Register</Button>
-                        </Link>
-                    </div>
-                </Form>
-            </Col>
-        </Row>
+        <Col md={6}>
+            <Form>
+                <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+                    {/* code added here to display validation error */}
+                    {usernameErr && <p className="login-error">{usernameErr}</p>}
+                </Form.Group>
+                <Form.Group controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    {/* code added here to display validation error */}
+                    {passwordErr && <p className="login-error">{passwordErr}</p>}
+                </Form.Group>
+                <div className="buttons">
+                    <Button variant="primary" type="submit" onClick={handleSubmit} className="login-button">
+                        Login
+                    </Button>
+                    <Link to={'/register'}>
+                        <Button variant="primary" type="submit">Register</Button>
+                    </Link>
+                </div>
+            </Form>
+        </Col>
     );
 }
 

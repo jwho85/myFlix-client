@@ -16,6 +16,7 @@ body a {
 .btn {
     background: #e50914 !important;
     border-color: #e50914 !important;
+    margin-right: 10px !important;
 }
 
 .btn:hover {
@@ -79,4 +80,15 @@ body a {
 
 .link-underline {
     text-decoration: underline !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    padding-right: 20px !important;
+}
+
+.footer {
+    text-align: center !important;
+    color: white !important;
+    background: #141414 !important;
+    opacity: 0.9 !important;
 }

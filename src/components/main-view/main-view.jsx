@@ -15,6 +15,7 @@ import { DirectorView } from "../director-view/director-view";
 import { ProfileView } from "../profile-view/profile-view";
 
 import { Menubar } from "../navbar/navbar";
+import { FooterView } from "../footer/footer";
 
 export default class MainView extends React.Component {
     constructor() {
@@ -89,26 +90,26 @@ export default class MainView extends React.Component {
         return (
             <Router>
                 <Menubar user={user} />
+                <Row className="justify-content-md-center">
+                    <Route
+                        exact
+                        path="/"
+                        render={() => {
+                            if (!user) {
+                                return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+                            }
+                            if (movies.length === 0) {
+                                return <div className="main-view" />;
+                            }
+                            return movies.map((m) => (
 
-                <Route
-                    exact
-                    path="/"
-                    render={() => {
-                        if (!user) {
-                            return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-                        }
-                        if (movies.length === 0) {
-                            return <div className="main-view" />;
-                        }
-                        return movies.map((m) => (
-                            <Row className="justify-content-md-center">
                                 <Col md={3} key={m._id}>
                                     <MovieCard movie={m} />
                                 </Col>
-                            </Row>
-                        ));
-                    }}
-                />
+                            ));
+                        }}
+                    />
+                </Row>
 
                 <Route
                     exact
@@ -199,6 +200,7 @@ export default class MainView extends React.Component {
                     }}
                 />
 
+
                 <Route
                     path="/users/:username"
                     render={({ history, match }) => {
@@ -209,18 +211,15 @@ export default class MainView extends React.Component {
                             return <div className="main-view" />;
                         }
                         return (
-                            <Row className="justify-content-md-center">
-                                <Col md={4}>
-                                    <ProfileView
-                                        history={history}
-                                        movies={movies}
-                                        user={user === match.params.username}
-                                    />
-                                </Col>
-                            </Row>
+                            <ProfileView
+                                history={history}
+                                movies={movies}
+                                user={user === match.params.username}
+                            />
                         );
                     }}
                 />
+                <FooterView />
             </Router>
         );
     }
