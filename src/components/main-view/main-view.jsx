@@ -153,7 +153,7 @@ export default class MainView extends React.Component {
                 <Route
                     exact
                     path="/genres/:name"
-                    render={({ match }) => {
+                    render={({ match, history }) => {
                         if (!user) {
                             return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
                         }

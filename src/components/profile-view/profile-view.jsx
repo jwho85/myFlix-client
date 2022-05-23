@@ -100,7 +100,9 @@ export class ProfileView extends React.Component {
             });
     };
 
-    deleteProfile = () => {
+    deleteProfile = (e) => {
+        e.preventDefault();
+
         let result = confirm(`Are you sure you want to delete your profile?`);
 
         if (result) {
@@ -232,7 +234,7 @@ export class ProfileView extends React.Component {
                                 <Button
                                     variant="danger"
                                     type="submit"
-                                    onClick={this.deleteProfile}
+                                    onClick={(e) => this.deleteProfile(e)}
                                 >
                                     Delete Profile
                                 </Button>
