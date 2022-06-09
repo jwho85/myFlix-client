@@ -9,6 +9,9 @@ import axios from "axios";
 import "./profile-view.scss";
 import { Card } from "react-bootstrap";
 
+import { connect } from 'react-redux';
+import { removeFavorite } from "../../actions/actions";
+
 export class ProfileView extends React.Component {
     constructor() {
         super();
@@ -246,3 +249,11 @@ export class ProfileView extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { removeFavorite })(ProfileView);
