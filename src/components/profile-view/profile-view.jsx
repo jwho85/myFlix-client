@@ -140,7 +140,6 @@ export class ProfileView extends React.Component {
             )
             .then((response) => {
                 console.log(response);
-                // alert(`${movie.Title} has been removed from your favorites.`);
                 this.componentDidMount();
             })
             .catch(function (error) {
@@ -150,7 +149,7 @@ export class ProfileView extends React.Component {
 
     render() {
 
-        const { Username, Password, Email, Birthday, FavoriteMovies } = this.state
+        const { Username, Password, Email, Birthday, FavoriteMovies } = this.state;
         const { movies } = this.props;
 
         return (

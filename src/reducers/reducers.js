@@ -32,7 +32,7 @@ function user(state = '', action) {
             return action.value;
         case ADD_FAVORITE:
             return action.value;
-        case REMOVE_FAVORITE;
+        case REMOVE_FAVORITE:
             return action.value;
         default:
             return state;
