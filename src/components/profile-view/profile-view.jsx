@@ -10,7 +10,7 @@ import "./profile-view.scss";
 import { Card } from "react-bootstrap";
 
 import { connect } from 'react-redux';
-import { removeFavorite } from "../../actions/actions";
+import { setUser, removeFavorite } from "../../actions/actions";
 
 export class ProfileView extends React.Component {
     constructor() {
@@ -26,31 +26,37 @@ export class ProfileView extends React.Component {
     }
 
     componentDidMount() {
-        this.getUserDetails();
+        this.setState({
+            Username: this.props.user.Username,
+            Password: this.props.user.Password,
+            Email: this.props.user.Email,
+            Birthday: this.props.user.Birthday,
+            FavoriteMovies: this.props.user.FavoriteMovies,
+        });
     }
 
-    getUserDetails() {
-        const Username = localStorage.getItem("user");
-        let token = localStorage.getItem("token");
+    // getUserDetails() {
+    //     const Username = localStorage.getItem("user");
+    //     let token = localStorage.getItem("token");
 
-        axios
-            .get(`https://movie-api-hoover.herokuapp.com/users/${Username}`, {
-                headers: { Authorization: `Bearer ${token}` },
-            })
-            .then((response) => {
-                console.log(response);
-                this.setState({
-                    Username: response.data.Username,
-                    Password: response.data.Password,
-                    Email: response.data.Email,
-                    Birthday: response.data.Birthday,
-                    FavoriteMovies: response.data.FavoriteMovies,
-                });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
+    //     axios
+    //         .get(`https://movie-api-hoover.herokuapp.com/users/${Username}`, {
+    //             headers: { Authorization: `Bearer ${token}` },
+    //         })
+    //         .then((response) => {
+    //             console.log(response);
+    //             this.setState({
+    //                 Username: response.data.Username,
+    //                 Password: response.data.Password,
+    //                 Email: response.data.Email,
+    //                 Birthday: response.data.Birthday,
+    //                 FavoriteMovies: response.data.FavoriteMovies,
+    //             });
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    // }
 
     setUsername(input) {
         this.setState({ Username: input });
@@ -96,7 +102,7 @@ export class ProfileView extends React.Component {
                 });
                 localStorage.setItem("user", this.state.Username);
                 alert(`Profile has been updated.`);
-                window.open("/", "_self"); // So the page will open in the current tab
+                this.props.setUser(response.data);
             })
             .catch((response) => {
                 console.error(response);
@@ -157,7 +163,7 @@ export class ProfileView extends React.Component {
                 {console.log(this.state)}
                 <Row className="justify-content-md-center">
                     {FavoriteMovies.length === 0 ? (
-                        <p class="white-text">You have no favorite movies.</p>
+                        <p className="white-text">You have no favorite movies.</p>
                     ) : (
                         movies
                             .filter((movie) => FavoriteMovies.includes(movie._id))
@@ -255,4 +261,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { removeFavorite })(ProfileView);
+export default connect(mapStateToProps, { setUser, removeFavorite })(ProfileView);

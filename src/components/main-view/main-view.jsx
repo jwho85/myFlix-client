@@ -33,10 +33,6 @@ import { FooterView } from "../footer/footer";
 class MainView extends React.Component {
     constructor() {
         super();
-        // Initial state is set to null
-        this.state = {
-            user: null,
-        };
     }
 
     getMovies(token) {
@@ -55,9 +51,6 @@ class MainView extends React.Component {
     componentDidMount() {
         let accessToken = localStorage.getItem("token");
         if (accessToken !== null) {
-            this.setState({
-                user: localStorage.getItem("user"),
-            });
             this.getMovies(accessToken);
         }
     }
@@ -83,9 +76,6 @@ class MainView extends React.Component {
     onLoggedOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        this.setState({
-            user: null,
-        });
     }
 
     render() {
@@ -218,7 +208,6 @@ class MainView extends React.Component {
                             <ProfileView
                                 history={history}
                                 movies={movies}
-                                user={user === match.params.username}
                             />
                         );
                     }}

@@ -74,6 +74,10 @@ body a {
     color: white !important;
 }
 
+.navbar-light .navbar-toggler {
+    background: grey !important;
+}
+
 .login-error {
     color: #e50914 !important;
 }
