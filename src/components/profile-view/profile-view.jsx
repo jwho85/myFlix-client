@@ -35,12 +35,11 @@ export class ProfileView extends React.Component {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
-                console.log(response);
                 this.setState({
                     Username: response.data.Username,
                     Password: response.data.Password,
                     Email: response.data.Email,
-                    Birthday: response.data.Birthday,
+                    Birthday: response.data.Birthday.split('T')[0],
                     FavoriteMovies: response.data.FavoriteMovies,
                 });
             })
@@ -151,7 +150,6 @@ export class ProfileView extends React.Component {
 
         return (
             <>
-                {console.log(this.state)}
                 <Row className="justify-content-md-center">
                     {FavoriteMovies.length === 0 ? (
                         <p className="white-text">You have no favorite movies.</p>
@@ -201,7 +199,7 @@ export class ProfileView extends React.Component {
                                 <Form.Control
                                     type="password"
                                     placeholder="Enter new password"
-                                    value={Password}
+                                    value=''
                                     onChange={(e) => this.setPassword(e.target.value)}
                                 />
                             </Form.Group>
