@@ -92,3 +92,7 @@ body a {
     background: #141414 !important;
     opacity: 0.9 !important;
 }
+
+.navbar-light .navbar-toggler {
+    background: grey !important;
+}

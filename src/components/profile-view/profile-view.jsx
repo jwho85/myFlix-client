@@ -155,7 +155,7 @@ export class ProfileView extends React.Component {
                 {console.log(this.state)}
                 <Row className="justify-content-md-center">
                     {FavoriteMovies.length === 0 ? (
-                        <p class="white-text">You have no favorite movies.</p>
+                        <p className="white-text">You have no favorite movies.</p>
                     ) : (
                         movies
                             .filter((movie) => FavoriteMovies.includes(movie._id))

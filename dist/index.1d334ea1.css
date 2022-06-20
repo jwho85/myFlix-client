@@ -102,4 +102,8 @@ body a {
     background: #141414 !important;
     opacity: 0.9 !important;
 }
+
+.navbar-light .navbar-toggler {
+    background: grey !important;
+}
 /*# sourceMappingURL=index.1d334ea1.css.map */
