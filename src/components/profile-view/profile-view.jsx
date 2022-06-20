@@ -93,7 +93,7 @@ export class ProfileView extends React.Component {
                 });
                 localStorage.setItem("user", this.state.Username);
                 alert(`Profile has been updated.`);
-                window.open("/", "_self"); // So the page will open in the current tab
+                this.getUserDetails();
             })
             .catch((response) => {
                 console.error(response);
@@ -137,7 +137,6 @@ export class ProfileView extends React.Component {
             )
             .then((response) => {
                 console.log(response);
-                // alert(`${movie.Title} has been removed from your favorites.`);
                 this.componentDidMount();
             })
             .catch(function (error) {
