@@ -199,7 +199,6 @@ export class ProfileView extends React.Component {
                                 <Form.Control
                                     type="password"
                                     placeholder="Enter new password"
-                                    value=''
                                     onChange={(e) => this.setPassword(e.target.value)}
                                 />
                             </Form.Group>
