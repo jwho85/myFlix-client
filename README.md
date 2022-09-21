@@ -1,8 +1,6 @@
 # myFlix-client
 
-## Description
-
-The objective of this project was to build the client-side for an application called myFlix based on its existing server-side code (REST API and database) using React. It was built using HTML, CSS, JavaScript, React, Axios, React Bootstrap, and React Router.
+The objective of this project was to build the client-side for an application called myFlix based on its existing server-side code (REST API and database) using React.
 
 ## Tech
 
