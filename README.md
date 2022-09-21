@@ -1,6 +1,20 @@
 # myFlix-client
- 
-Using React, build the client-side for an application called myFlix based on its existing server-side code (REST API and database).
+
+## Description
+
+The objective of this project was to build the client-side for an application called myFlix based on its existing server-side code (REST API and database) using React. It was built using HTML, CSS, JavaScript, React, Axios, React Bootstrap, and React Router.
+
+## Tech
+
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>React</li>
+<li>Axios</li>
+<li>React Bootstrap</li>
+<li>React Router</li>
+</ul>
 
 ## The 5 Ws
 
@@ -12,8 +26,10 @@ Using React, build the client-side for an application called myFlix based on its
 
 ## User Stories
 
--As  a  user,  I  want  to  be  able  to  access  information  on  movies,  directors,  and  genres  so  that  I  can  learn  more  about  movies  I’ve  watched  or  am  interested  in.<br>
--As  a  user,  I  want  to  be  able  to  create  a  profile  so  I  can  save  data  about  my  favorite  movies. 
+<ul>
+<li>As  a  user,  I  want  to  be  able  to  access  information  on  movies,  directors,  and  genres  so  that  I  can  learn  more  about  movies  I’ve  watched  or  am  interested  in.</li>
+<li>As  a  user,  I  want  to  be  able  to  create  a  profile  so  I  can  save  data  about  my  favorite  movies. </li>
+</ul>
 
 ## Dependencies
 
@@ -24,3 +40,10 @@ Using React, build the client-side for an application called myFlix based on its
 "react-bootstrap": "^2.3.1",<br>
 "react-dom": "^18.0.0",<br>
 "react-router-dom": "^5.2.1"
+
+## Get Started
+
+<ul>
+<li>Clone the project</li>
+<li>Run npm start</li>
+</ul>
